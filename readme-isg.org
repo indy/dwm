@@ -1,0 +1,36 @@
+
+* git setup
+
+  $ cd code
+  $ git clone https://git.suckless.org/dwm
+  $ cd dwm
+
+  # created a dwm repo on git.indy.io
+
+  # make the local copy aware of that
+  $ git remote add indy.io git@git.indy.io:indy/dwm.git
+
+  # push the suckless master onto git.indy.io
+  git push -u indy.io master
+
+  # create a local custom branch for my changes
+  git checkout -b custom
+
+  # push the custom branch to git.indy.io
+  git push indy.io custom
+
+  # make git pull use the right remote branch
+  git branch -u indy.io/custom
+
+  # this will now pull from indy.io/custom
+  git pull
+
+* git workflow
+
+  changes from suckless will require (i think):
+
+  git checkout -b master
+  git fetch -u origin master
+  git push -u indy.io master
+
+  and rebasing custom from indy.io/master ? is a clean history possible or will there be merges?

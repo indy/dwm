@@ -40,8 +40,6 @@ install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
-	cp -f dwmstartup ${DESTDIR}${PREFIX}/bin
-	chmod 755 ${DESTDIR}${PREFIX}/bin/dwmstartup
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
@@ -50,4 +48,10 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-.PHONY: all options clean dist install uninstall
+# invoke once as sudo to setup lightdm with a dwm session option
+indy-system-install:
+	cp misc/dwm.desktop /usr/share/xsessions/.
+	cp misc/dwmstart /usr/local/bin/.
+	chmod 755 /usr/local/bin/dwmstart
+
+.PHONY: all options clean dist install uninstall indy-system-install

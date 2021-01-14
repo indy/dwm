@@ -1,12 +1,7 @@
 
 * setup
-  1. copy misc/dwm.desktop into /usr/share/xsessions/.
-  2. copy misc/dwmstart into /usr/local/bin
-  3. chmod 755 /usr/local/bin/dwmstart
 
-     todo: why can't lightdm list an xsession setup which launches a script from a user's home subdirectory?
-     that's why there's the indirection of dwm.desktop going via /usr/local/bin/dwmstart to ~/.local/bin/dwmstartup
-
+  $ sudo make indy-system-install
 
 * compiling
 ** build pre-requisites

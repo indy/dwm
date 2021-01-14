@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
@@ -35,6 +35,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
+  "sh", "-c", "while :; do feh --randomize --bg-max /home/indy/gdrive/art/* -; sleep 30m; done", NULL,
 	"dwmblocks", NULL,
 	"emacs", NULL,
 	"brave-browser", NULL,
@@ -53,8 +54,8 @@ static const Rule rules[] = {
 	{ "Gimp",              NULL,       NULL,       0,            1,           -1 },
 	{ "Emacs",             NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Brave-browser",     NULL,       NULL,       1 << 0,       0,           -1 },
-	{ "Chromium-browser",  NULL,       NULL,       1 << 9,       0,           -1 },
-	{ "Firefox",           NULL,       NULL,       1 << 0,       0,           -1 },
+	{ "Chromium-browser",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",           NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */

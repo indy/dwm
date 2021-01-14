@@ -1,3 +1,2 @@
 #!/bin/bash
-
-exec /home/indy/.local/bin/dwmstartup
+exec /home/indy/.local/bin/dwm

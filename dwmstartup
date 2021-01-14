@@ -1,5 +1,0 @@
-#!/bin/bash
-
-feh --randomize --bg-max ~/gdrive/art/*
-
-exec /home/indy/.local/bin/dwm

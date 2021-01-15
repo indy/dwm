@@ -1,6 +1,16 @@
 # dwm - dynamic window manager
 # See LICENSE file for copyright and license details.
 
+##########################################################
+#
+# (isg) One time installation for lightdm on ubuntu with:
+# $ sudo make indy-system-install
+#
+# then further installs are:
+# $ make install
+#
+##########################################################
+
 include config.mk
 
 SRC = drw.c dwm.c util.c

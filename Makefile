@@ -60,8 +60,8 @@ uninstall:
 
 # invoke once as sudo to setup lightdm with a dwm session option
 indy-system-install:
-	cp misc/dwm.desktop /usr/share/xsessions/.
-	cp misc/dwmstart /usr/local/bin/.
+	cp scripts/system/dwm.desktop /usr/share/xsessions/.
+	cp scripts/system/dwmstart /usr/local/bin/.
 	chmod 755 /usr/local/bin/dwmstart
 
 .PHONY: all options clean dist install uninstall indy-system-install

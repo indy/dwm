@@ -108,7 +108,7 @@ static Key keys[] = {
 	{ MODKEY,             XK_l,                    setmfact,       {.f = +0.05} },
 	{ MODKEY,             XK_Return,               zoom,           {0} },
 	{ MODKEY,             XK_Tab,                  view,           {0} },
-	{ MODKEY|ShiftMask,   XK_c,                    killclient,     {0} },
+	{ MODKEY|ShiftMask,   XK_q,                    killclient,     {0} },
 	{ MODKEY,             XK_u, /* centered */     setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,             XK_t, /* tile     */     setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,             XK_f, /* float    */     setlayout,      {.v = &layouts[2]} },
@@ -134,7 +134,7 @@ static Key keys[] = {
 	TAGKEYS(              XK_7,                                    6)
 	TAGKEYS(              XK_8,                                    7)
 	TAGKEYS(              XK_9,                                    8)
-	{ MODKEY|ShiftMask,   XK_q,                    quit,           {0} },
+	{ MODKEY|ShiftMask,   XK_e, /* exit dwm */     quit,           {0} },
 };
 
 /* button definitions */
@@ -144,7 +144,6 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-  //	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkStatusText,        0,              Button1,        sigdwmblocks,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigdwmblocks,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },

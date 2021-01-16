@@ -32,6 +32,7 @@
 #include <sys/wait.h>
 #include <X11/cursorfont.h>
 #include <X11/keysym.h>
+#include <X11/XF86keysym.h>     // (isg@20210116) only used for controlling volume via media keys
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <X11/Xproto.h>
@@ -173,7 +174,9 @@ static void enternotify(XEvent *e);
 static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
+#if 0
 static void focusmon(const Arg *arg);
+#endif
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -181,7 +184,9 @@ static long getstate(Window w);
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
-// static void incnmaster(const Arg *arg);
+#if 0
+static void incnmaster(const Arg *arg);
+#endif
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
@@ -908,6 +913,7 @@ focusin(XEvent *e)
 		setfocus(selmon->sel);
 }
 
+#if 0
 void
 focusmon(const Arg *arg)
 {
@@ -921,6 +927,7 @@ focusmon(const Arg *arg)
 	selmon = m;
 	focus(NULL);
 }
+#endif
 
 void
 focusstack(const Arg *arg)
@@ -1056,12 +1063,14 @@ grabkeys(void)
 	}
 }
 
-// void
-// incnmaster(const Arg *arg)
-// {
-// 	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
-// 	arrange(selmon);
-// }
+#if 0
+void
+incnmaster(const Arg *arg)
+{
+	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
+	arrange(selmon);
+}
+#endif
 
 #ifdef XINERAMA
 static int

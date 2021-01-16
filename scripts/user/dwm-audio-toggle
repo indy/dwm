@@ -1,0 +1,5 @@
+#!/bin/sh
+amixer -q -D pulse sset Master toggle
+
+# signal dwm block 1 (audio) to update
+sigdwmblocks 1

@@ -167,7 +167,9 @@ static Monitor *createmon(void);
 static void destroynotify(XEvent *e);
 static void detach(Client *c);
 static void detachstack(Client *c);
+#if 0
 static Monitor *dirtomon(int dir);
+#endif
 static void drawbar(Monitor *m);
 static void drawbars(void);
 static void enternotify(XEvent *e);
@@ -220,7 +222,9 @@ static void sigchld(int unused);
 static void sigdwmblocks(const Arg *arg);
 static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
+#if 0
 static void tagmon(const Arg *arg);
+#endif
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -746,6 +750,7 @@ detachstack(Client *c)
 	}
 }
 
+#if 0
 Monitor *
 dirtomon(int dir)
 {
@@ -760,6 +765,7 @@ dirtomon(int dir)
 		for (m = mons; m->next != selmon; m = m->next);
 	return m;
 }
+#endif
 
 void
 drawbar(Monitor *m)
@@ -1839,6 +1845,7 @@ tag(const Arg *arg)
 	}
 }
 
+#if 0
 void
 tagmon(const Arg *arg)
 {
@@ -1846,6 +1853,7 @@ tagmon(const Arg *arg)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
 }
+#endif
 
 void
 tile(Monitor *m)

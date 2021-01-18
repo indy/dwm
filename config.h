@@ -107,7 +107,10 @@ static Key keys[] = {
 	{ MODKEY,             XK_h,                    setmfact,       {.f = -0.05} },
 	{ MODKEY,             XK_l,                    setmfact,       {.f = +0.05} },
 	{ MODKEY,             XK_Return,               zoom,           {0} },
+	{ ALTKEY,             XK_Return,               zoom,           {0} }, // emacs typo prevention
+#if 0
 	{ MODKEY,             XK_Tab,                  view,           {0} },
+#endif
 	{ MODKEY|ShiftMask,   XK_q,                    killclient,     {0} },
 	{ MODKEY,             XK_u, /* centered */     setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,             XK_t, /* tile     */     setlayout,      {.v = &layouts[1]} },
@@ -119,12 +122,16 @@ static Key keys[] = {
   { 0,                  XF86XK_AudioMute,        spawn,          {.v = audiotogglecmd } },
   { 0,                  XF86XK_AudioLowerVolume, spawn,          {.v = audiodeccmd } },
   { 0,                  XF86XK_AudioRaiseVolume, spawn,          {.v = audioinccmd } },
+#if 0
 	{ MODKEY,             XK_space,                setlayout,      {0} },
+#endif
 	{ MODKEY|ShiftMask,   XK_space,                togglefloating, {0} },
+#if 0
 	{ MODKEY,             XK_0,                    view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,   XK_0,                    tag,            {.ui = ~0 } },
 	{ MODKEY|ShiftMask,   XK_comma,                tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,   XK_period,               tagmon,         {.i = +1 } },
+#endif
 	TAGKEYS(              XK_1,                                    0)
 	TAGKEYS(              XK_2,                                    1)
 	TAGKEYS(              XK_3,                                    2)

@@ -78,16 +78,19 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *dmenuisgcommoncmd[] = { "dmenu_run_isg_common", "-m", dmenumon, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
-static const char *audiotogglecmd[]  = { "dwm-audio-toggle", NULL };
-static const char *audiodeccmd[]  = { "dwm-audio-dec", NULL };
-static const char *audioinccmd[]  = { "dwm-audio-inc", NULL };
+static const char *audiotogglecmd[] = { "dwm-audio", "toggle", NULL };
+static const char *audiodeccmd[]    = { "dwm-audio", "dec", NULL };
+static const char *audioinccmd[]    = { "dwm-audio", "inc", NULL };
+static const char *audioplaycmd[]   = { "dwm-audio", "playpause", NULL };
+static const char *audioprevcmd[]   = { "dwm-audio", "prev", NULL };
+static const char *audionextcmd[]   = { "dwm-audio", "next", NULL };
 
 static Key keys[] = {
 	/* modifier           key                      function        argument */
 	{ MODKEY,             XK_d,                    spawn,          {.v = dmenuisgcommoncmd } },
 	{ MODKEY|ShiftMask,   XK_d,                    spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,   XK_Return,               spawn,          {.v = termcmd } },
-	{ MODKEY,             XK_b,                    togglebar,      {0} },
+	{ MODKEY,             XK_space,                togglebar,      {0} }, // the obvious key for togglebar
 	{ MODKEY,             XK_j,                    focusstack,     {.i = +1 } },
 	{ MODKEY,             XK_k,                    focusstack,     {.i = -1 } },
 	{ ALTKEY,             XK_0,                    focusstack,     {.i = +1 } }, // emacs finger memory
@@ -109,14 +112,22 @@ static Key keys[] = {
 	{ MODKEY,             XK_t, /* tile     */     setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,   XK_f, /* float    */     setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,             XK_s, /* single   */     setlayout,      {.v = &layouts[3]} },
+  // audio controls
+  { MODKEY,             XK_v,                    spawn,          {.v = audioplaycmd } },
+  { MODKEY,             XK_b,                    spawn,          {.v = audioprevcmd } },
+  { MODKEY,             XK_n,                    spawn,          {.v = audionextcmd } },
   { MODKEY,             XK_m,                    spawn,          {.v = audiotogglecmd } },
   { MODKEY,             XK_comma,                spawn,          {.v = audiodeccmd } },
   { MODKEY,             XK_period,               spawn,          {.v = audioinccmd } },
+  { 0,                  XF86XK_AudioPlay,        spawn,          {.v = audioplaycmd } },
+  { 0,                  XF86XK_AudioPause,       spawn,          {.v = audioplaycmd } },
+  { 0,                  XF86XK_AudioPrev,        spawn,          {.v = audioprevcmd } },
+  { 0,                  XF86XK_AudioNext,        spawn,          {.v = audionextcmd } },
   { 0,                  XF86XK_AudioMute,        spawn,          {.v = audiotogglecmd } },
   { 0,                  XF86XK_AudioLowerVolume, spawn,          {.v = audiodeccmd } },
   { 0,                  XF86XK_AudioRaiseVolume, spawn,          {.v = audioinccmd } },
 #if 0
-	{ MODKEY,             XK_space,                setlayout,      {0} },
+	{ MODKEY,             XK_space,                setlayout,      {0} }, // key taken by togglebar
 #endif
 	{ MODKEY|ShiftMask,   XK_space,                togglefloating, {0} },
 #if 0

@@ -1,5 +1,0 @@
-#!/bin/sh
-amixer -q sset Master 5%+
-
-# signal dwm block 1 (audio) to update
-sigdwmblocks 1

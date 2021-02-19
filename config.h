@@ -8,12 +8,14 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack-11" };
 static const char dmenufont[]       = "Hack-11";
 
-static const char col_dark[]        = "#090909"; // bg0 from athens theme
-static const char col_light[]       = "#c0b18b"; // same as dmenu
-static const char col_hi[]          = "#bf8259"; // same as dmenu
+#define MONO_BG "#090909"
+#define MONO_FG "#dd9d5c"
+static const char col_dark[]        = MONO_BG; // bg0 from athens theme
+static const char col_light[]       = MONO_FG;
+static const char col_hi[]          = MONO_FG;
 
 static const char col_dark_border[] = "#000000";
-static const char col_hi_border[]   = "#9e6b49"; // darkened col_hi by 10% in themacs
+static const char col_hi_border[]   = MONO_FG;
 
 enum { SchemeNorm, SchemeSel }; /* color schemes */
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-exec /home/indy/.local/bin/dwm
+exec /home/indy/.local/bin/dwm &> /tmp/dwm-123

@@ -20,5 +20,4 @@ then
   rhythmbox-client --next
 fi
 
-# signal dwm block 1 (audio) to update
-sigdwmblocks 1
+dwm-bar-update

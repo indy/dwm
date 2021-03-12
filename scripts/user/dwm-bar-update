@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# ----------------------------------------
+
+if test "$(amixer sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]"
+then
+    # audible
+    AUDIO=$(printf "Audio: %s" "$(amixer sget Master | awk -F"[][]" '/Mono:/ { print $2 }')")
+else
+    # muted
+    AUDIO=$(printf "Muted")
+fi
+
+# ----------------------------------------
+
+if [ -d "/sys/class/power_supply/BAT0" ]
+then
+    read -r status </sys/class/power_supply/BAT0/status
+    read -r capacity </sys/class/power_supply/BAT0/capacity
+    BATTERY=$(printf "Battery %s: %s%%" "$status" "$capacity")
+else
+    BATTERY=""
+fi
+
+# ----------------------------------------
+
+diskspace() {
+    df -h | grep ^${1-} | awk '{print $3 " free"}'
+}
+
+case $HOSTNAME in
+  (theseus) DISKSPACE=$(diskspace /dev/sdc2);;
+  (dellboy) DISKSPACE=$(diskspace /dev/nvme0n1p3);;
+  (*) DISKSPACE=$(printf "(dwm-bar) unknown hostname");;
+esac
+
+# ----------------------------------------
+
+DATETIME=$(printf "%s" "$(date '+%a %b %d %R')")
+
+# ----------------------------------------
+
+xsetroot -name " $AUDIO   $BATTERY   $DISKSPACE   $DATETIME "

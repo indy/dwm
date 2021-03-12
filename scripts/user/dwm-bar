@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+while true; do
+      dwm-bar-update
+      sleep 1m
+done

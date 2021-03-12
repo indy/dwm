@@ -28,10 +28,6 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
   "sh", "-c", "while :; do feh --randomize --bg-max /home/indy/gdrive/art/* -; sleep 30m; done", NULL,
   "dwm-bar", NULL,
-#if 0
-  "emacs", NULL,
-  "brave-browser", NULL,
-#endif
 	NULL /* terminate */
 };
 

@@ -2,7 +2,7 @@
 
 # ----------------------------------------
 
-if test "$(amixer sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]"
+if [ "$(amixer sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]" ]
 then
     # audible
     AUDIO=$(printf "Audio: %s" "$(amixer sget Master | awk -F"[][]" '/Mono:/ { print $2 }')")
@@ -18,8 +18,6 @@ then
     read -r status </sys/class/power_supply/BAT0/status
     read -r capacity </sys/class/power_supply/BAT0/capacity
     BATTERY=$(printf "Battery %s: %s%%" "$status" "$capacity")
-else
-    BATTERY=""
 fi
 
 # ----------------------------------------
@@ -40,4 +38,9 @@ DATETIME=$(printf "%s" "$(date '+%a %b %d %R')")
 
 # ----------------------------------------
 
-xsetroot -name " $AUDIO   $BATTERY   $DISKSPACE   $DATETIME "
+if [ -z "$BATTERY" ]
+then
+    xsetroot -name " $AUDIO   $DISKSPACE   $DATETIME "
+else
+    xsetroot -name " $AUDIO   $BATTERY   $DISKSPACE   $DATETIME "
+fi

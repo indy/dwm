@@ -863,6 +863,10 @@ findbefore(Client *c)
 void
 focus(Client *c)
 {
+  unsigned int n;
+  Client *tmp;
+  unsigned long pixel;
+
 	if (!c || !ISVISIBLE(c))
 		for (c = selmon->stack; c && !ISVISIBLE(c); c = c->snext);
 	if (selmon->sel && selmon->sel != c)
@@ -875,7 +879,11 @@ focus(Client *c)
 		detachstack(c);
 		attachstack(c);
 		grabbuttons(c, 1);
-		XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
+
+    for (n = 0, tmp = nexttiled(selmon->clients); tmp; tmp = nexttiled(tmp->next), n++);
+    pixel = n > 1 ? scheme[SchemeSel][ColBorder].pixel : scheme[SchemeNorm][ColBorder].pixel;
+    XSetWindowBorder(dpy, c->win, pixel);
+
 		setfocus(c);
 	} else {
 		XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);

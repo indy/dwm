@@ -8,21 +8,19 @@ static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack-11" };
 static const char dmenufont[]       = "Hack-11";
 
-#define MONO_BG "#090909"
-#define MONO_FG "#dd9d5c"
-static const char col_dark[]        = MONO_BG; // bg0 from athens theme
-static const char col_light[]       = MONO_FG;
-static const char col_hi[]          = MONO_FG;
+#define COL_BLACK "#000000"
+#define COL_DARK "#090909"
+#define COL_LIGHT "#dd9d5c"
+#define COL_DIM "#444444"
 
-static const char col_dark_border[] = "#000000";
-static const char col_hi_border[]   = MONO_FG;
-
-enum { SchemeNorm, SchemeSel }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeTagOn, SchemeTagOff }; /* color schemes */
 
 static const char *colors[][3]      = {
-  /*                fg          bg        border   */
-  [SchemeNorm]  = { col_dark,   col_hi,   col_dark_border },
-  [SchemeSel]   = { col_light,  col_dark, col_hi_border },
+  /*                   fg          bg           border   */
+  [SchemeNorm]   = { COL_DARK,   COL_LIGHT,   COL_BLACK },
+  [SchemeSel]    = { COL_LIGHT,  COL_DARK,    COL_LIGHT },
+  [SchemeTagOn]  = { COL_LIGHT,  COL_DARK,    COL_LIGHT },
+  [SchemeTagOff] = { COL_DIM,    COL_DARK,    COL_LIGHT },
 };
 
 static const char *const autostart[] = {
@@ -63,7 +61,7 @@ static const Layout layouts[] = {
 	{ "|M|",      centeredmaster }, /* first entry is default */
 	{ "=[]",      tile },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "(M)",      monocle },
 };
 
 /* key definitions */

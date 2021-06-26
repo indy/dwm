@@ -23,7 +23,7 @@ fi
 # ----------------------------------------
 
 diskspace() {
-    df -h | grep ^${1-} | awk '{print $3 " free"}'
+    df -h | grep ^${1-} | awk '{print $4 " free"}'
 }
 
 case $HOSTNAME in

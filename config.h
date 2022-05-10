@@ -41,14 +41,13 @@ static const Rule rules[] = {
    *  WM_CLASS(STRING) = instance, class
    *  WM_NAME(STRING) = title
    */
-  /* class               instance    title       tags mask     isfloating   monitor */
-  { "Gimp",              NULL,       NULL,       0,            1,           -1 },
-#if 0
-  { "Emacs",             NULL,       NULL,       1 << 1,       0,           -1 },
-  { "Brave-browser",     NULL,       NULL,       1 << 0,       0,           -1 },
-  { "Chromium-browser",  NULL,       NULL,       1 << 8,       0,           -1 },
-  { "Firefox",           NULL,       NULL,       1 << 8,       0,           -1 },
-#endif
+  /* class               instance    title       tags mask     switchtotag isfloating   monitor */
+  { "Brave-browser",     NULL,       NULL,       1 << 0,       1,          0,           -1 },
+  { "Emacs",             NULL,       NULL,       1 << 1,       1,          0,           -1 },
+  { "calibre",           NULL,       NULL,       1 << 2,       1,          0,           -1 },
+  { "Tor Browser",       NULL,       NULL,       1 << 3,       1,          0,           -1 },
+  { "Gimp",              NULL,       NULL,       1 << 4,       1,          1,           -1 },
+  { "Chromium-browser",  NULL,       NULL,       1 << 8,       1,          0,           -1 },
 };
 
 /* layout(s) */

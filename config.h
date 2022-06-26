@@ -10,7 +10,7 @@ static const char dmenufont[]       = "Hack-11";
 
 #define COL_BLACK "#000000"
 #define COL_DARK "#090909"
-#define COL_LIGHT "#dd9d5c"
+#define COL_LIGHT "#bf8259"
 #define COL_DIM "#444444"
 
 enum { SchemeNorm, SchemeSel, SchemeTagOn, SchemeTagOff }; /* color schemes */

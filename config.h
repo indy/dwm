@@ -120,9 +120,9 @@ static Key keys[] = {
   { MODKEY|ShiftMask,   XK_f, /* float    */     setlayout,      {.v = &layouts[2]} },
   { MODKEY,             XK_s, /* single   */     setlayout,      {.v = &layouts[3]} },
   // audio controls
-  { MODKEY,             XK_v,                    spawn,          {.v = audioplaycmd } },
-  { MODKEY,             XK_b,                    spawn,          {.v = audioprevcmd } },
-  { MODKEY,             XK_n,                    spawn,          {.v = audionextcmd } },
+  // { MODKEY,             XK_v,                    spawn,          {.v = audioplaycmd } },
+  // { MODKEY,             XK_b,                    spawn,          {.v = audioprevcmd } },
+  // { MODKEY,             XK_n,                    spawn,          {.v = audionextcmd } },
   { MODKEY,             XK_m,                    spawn,          {.v = audiotogglecmd } },
   { MODKEY,             XK_comma,                spawn,          {.v = audiodeccmd } },
   { MODKEY,             XK_period,               spawn,          {.v = audioinccmd } },

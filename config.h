@@ -114,15 +114,16 @@ static Key keys[] = {
 #endif
   { MODKEY|ShiftMask,   XK_q,                    killclient,     {0} },
   { MODKEY,             XK_f, /* fullscreen */   togglefullscreen, {0} },
-
   { MODKEY,             XK_u, /* centered */     setlayout,      {.v = &layouts[0]} },
   { MODKEY,             XK_t, /* tile     */     setlayout,      {.v = &layouts[1]} },
   { MODKEY|ShiftMask,   XK_f, /* float    */     setlayout,      {.v = &layouts[2]} },
   { MODKEY,             XK_s, /* single   */     setlayout,      {.v = &layouts[3]} },
   // audio controls
-  // { MODKEY,             XK_v,                    spawn,          {.v = audioplaycmd } },
-  // { MODKEY,             XK_b,                    spawn,          {.v = audioprevcmd } },
-  // { MODKEY,             XK_n,                    spawn,          {.v = audionextcmd } },
+#if 0
+  { MODKEY,             XK_v,                    spawn,          {.v = audioplaycmd } },
+  { MODKEY,             XK_b,                    spawn,          {.v = audioprevcmd } },
+  { MODKEY,             XK_n,                    spawn,          {.v = audionextcmd } },
+#endif
   { MODKEY,             XK_m,                    spawn,          {.v = audiotogglecmd } },
   { MODKEY,             XK_comma,                spawn,          {.v = audiodeccmd } },
   { MODKEY,             XK_period,               spawn,          {.v = audioinccmd } },

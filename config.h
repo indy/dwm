@@ -47,6 +47,7 @@ static const Rule rules[] = {
   { "calibre",           NULL,       NULL,       1 << 2,       1,          0,           -1 },
   { "Tor Browser",       NULL,       NULL,       1 << 3,       1,          0,           -1 },
   { "Gimp",              NULL,       NULL,       1 << 4,       1,          1,           -1 },
+  { "Steam",             NULL,       NULL,       1 << 5,       1,          0,           -1 },
   { "Chromium-browser",  NULL,       NULL,       1 << 8,       1,          0,           -1 },
 };
 

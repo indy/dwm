@@ -790,6 +790,9 @@ drawbar(Monitor *m)
   char tagdisp[64];
   char *masterclientontag[LENGTH(tags)];
 
+  if (!m->showbar)
+    return;
+
   /* draw status first so it can be overdrawn by tags later */
   if (m == selmon) { /* status is only drawn on selected monitor */
     drw_setscheme(drw, scheme[SchemeNorm]);

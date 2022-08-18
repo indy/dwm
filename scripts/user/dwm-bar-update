@@ -27,6 +27,7 @@ diskspace() {
 }
 
 case $HOSTNAME in
+  (anarch) DISKSPACE=$(diskspace /dev/sdc2);;
   (theseus) DISKSPACE=$(diskspace /dev/sdc2);;
   (dellboy) DISKSPACE=$(diskspace /dev/nvme0n1p3);;
   (*) DISKSPACE=$(printf "(dwm-bar) unknown hostname");;

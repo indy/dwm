@@ -1980,6 +1980,7 @@ unfocus(Client *c, int setfocus)
 void
 unmanage(Client *c, int destroyed)
 {
+  unsigned int switchtotag = c->switchtotag;
   Monitor *m = c->mon;
   XWindowChanges wc;
 
@@ -2000,8 +2001,8 @@ unmanage(Client *c, int destroyed)
   focus(NULL);
   updateclientlist();
   arrange(m);
-  if (c->switchtotag) {
-    Arg a = { .ui = c->switchtotag };
+  if (switchtotag) {
+    Arg a = { .ui = switchtotag };
     view(&a);
   }
 }

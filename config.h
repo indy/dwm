@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Hack-11" };
-static const char dmenufont[]       = "Hack-11";
+static const char *fonts[]          = { "Hack-8" };
+static const char dmenufont[]       = "Hack-8";
 
 #define COL_BLACK "#000000"
 #define COL_DARK "#090909"
@@ -24,7 +24,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-  "sh", "-c", "while :; do feh --randomize --bg-max /home/indy/gdrive/art/* -; sleep 30m; done", NULL,
+  "sh", "-c", "feh --randomize --bg-max /home/indy/gdrive/art/*", NULL,
   "dwm-bar", NULL,
   NULL /* terminate */
 };
@@ -42,7 +42,8 @@ static const Rule rules[] = {
    *  WM_NAME(STRING) = title
    */
   /* class               instance    title       tags mask     switchtotag isfloating   monitor */
-  { "Brave-browser",     NULL,       NULL,       1 << 0,       1,          0,           -1 },
+  /* { "firefox",           NULL,       NULL,       1 << 0,       1,          0,           -1 }, */
+  /* { "Brave-browser",     NULL,       NULL,       1 << 0,       1,          0,           -1 }, */
   { "Emacs",             NULL,       NULL,       1 << 1,       1,          0,           -1 },
   { "calibre",           NULL,       NULL,       1 << 2,       1,          0,           -1 },
   { "Tor Browser",       NULL,       NULL,       1 << 3,       1,          0,           -1 },
@@ -83,6 +84,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *commondmenucmd[] = { "dmenu_run_common", "-m", dmenumon, NULL };
 static const char *refreshbarcmd[] = { "dwm-bar-update", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *wallpapercmd[]  = { "sh", "-c", "feh --randomize --bg-max /home/indy/gdrive/art/*", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
@@ -140,6 +142,7 @@ static Key keys[] = {
 #if 0
   { MODKEY,             XK_space,                setlayout,      {0} }, // key taken by togglebar
 #endif
+  { MODKEY,             XK_w,                    spawn,          {.v = wallpapercmd } },
   { MODKEY|ShiftMask,   XK_space,                togglefloating, {0} },
 #if 0
   { MODKEY,             XK_0,                    view,           {.ui = ~0 } },

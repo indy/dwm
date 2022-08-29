@@ -1,12 +1,18 @@
 /* See LICENSE file for copyright and license details. */
 // hsluv: clock12: 67, 70, 50
 /* appearance */
+#ifdef LARGER_FONT
+#define DEFAULT_FONT "Hack-11"
+#else
+#define DEFAULT_FONT "Hack-8"
+#endif
+
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Hack-8" };
-static const char dmenufont[]       = "Hack-8";
+static const char *fonts[]          = { DEFAULT_FONT };
+static const char dmenufont[]       = DEFAULT_FONT;
 
 #define COL_BLACK "#000000"
 #define COL_DARK "#090909"

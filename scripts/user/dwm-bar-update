@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 
+# for some reason zek has the audio card at 1, everything else has it at 0
+case $HOSTNAME in
+  (zek) AUDIOCARD=1;;
+  (*) AUDIOCARD=0;;
+esac
+
 # ----------------------------------------
 
-if [ "$(amixer sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]" ]
+if [ "$(amixer -c $AUDIOCARD sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]" ]
 then
     # audible
-    AUDIO=$(printf "Audio: %s" "$(amixer sget Master | awk -F"[][]" '/Mono:/ { print $2 }')")
+    AUDIO=$(printf "Audio: %s" "$(amixer -c $AUDIOCARD sget Master | awk -F"[][]" '/Mono:/ { print $2 }')")
 else
     # muted
     AUDIO=$(printf "Muted")
@@ -30,6 +36,7 @@ case $HOSTNAME in
   (anarch) DISKSPACE=$(diskspace /dev/sdc2);;
   (theseus) DISKSPACE=$(diskspace /dev/sdc2);;
   (dellboy) DISKSPACE=$(diskspace /dev/nvme0n1p3);;
+  (zek) DISKSPACE=$(diskspace /dev/sda2);;
   (*) DISKSPACE=$(printf "(dwm-bar) unknown hostname");;
 esac
 

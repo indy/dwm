@@ -1,14 +1,19 @@
-#!/bin/sh
+#!/usr/bin/env bash
+
+case $HOSTNAME in
+  (zek) AUDIOCARD=1;;
+  (*) AUDIOCARD=0;;
+esac
 
 if [ "$1" = "dec" ]
 then
-  amixer -q sset Master 5%-
+  amixer -q -c $AUDIOCARD sset Master 5%-
 elif [ "$1" = "inc" ]
 then
-  amixer -q sset Master 5%+
+  amixer -q -c $AUDIOCARD sset Master 5%+
 elif [ "$1" = "toggle" ]
 then
-  amixer -q -D pulse sset Master toggle
+  amixer -q -c $AUDIOCARD -D pulse sset Master toggle
 elif [ "$1" = "playpause" ]
 then
   rhythmbox-client --play-pause

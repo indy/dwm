@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 case $HOSTNAME in
+  (zara) AUDIOCARD=1;;
   (zek) AUDIOCARD=1;;
   (*) AUDIOCARD=0;;
 esac

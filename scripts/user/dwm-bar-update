@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# for some reason zek has the audio card at 1, everything else has it at 0
 case $HOSTNAME in
+  (zara) AUDIOCARD=1;;
   (zek) AUDIOCARD=1;;
   (*) AUDIOCARD=0;;
 esac
@@ -36,6 +36,7 @@ case $HOSTNAME in
   (anarch) DISKSPACE=$(diskspace /dev/sdc2);;
   (theseus) DISKSPACE=$(diskspace /dev/sdc2);;
   (dellboy) DISKSPACE=$(diskspace /dev/nvme0n1p3);;
+  (zara) DISKSPACE=$(diskspace /dev/nvme0n1p2);;
   (zek) DISKSPACE=$(diskspace /dev/sda2);;
   (*) DISKSPACE=$(printf "(dwm-bar) unknown hostname");;
 esac

@@ -32,6 +32,8 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
   "sh", "-c", "feh --randomize --bg-max /home/indy/gdrive/art/*", NULL,
   "dwm-bar", NULL,
+  "emacs", NULL,
+  "brave", NULL,
   NULL /* terminate */
 };
 
@@ -49,7 +51,7 @@ static const Rule rules[] = {
    */
   /* class               instance    title       tags mask     switchtotag isfloating   monitor */
   /* { "firefox",           NULL,       NULL,       1 << 0,       1,          0,           -1 }, */
-  /* { "Brave-browser",     NULL,       NULL,       1 << 0,       1,          0,           -1 }, */
+  { "Brave-browser",     NULL,       NULL,       1 << 0,       1,          0,           -1 },
   { "Emacs",             NULL,       NULL,       1 << 1,       1,          0,           -1 },
   { "calibre",           NULL,       NULL,       1 << 2,       1,          0,           -1 },
   { "Tor Browser",       NULL,       NULL,       1 << 3,       1,          0,           -1 },

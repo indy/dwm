@@ -122,9 +122,7 @@ static Key keys[] = {
   { MODKEY,             XK_l,                    setmfact,       {.f = +0.05} },
   { MODKEY,             XK_Return,               zoom,           {0} },
   { ALTKEY,             XK_Return,               zoom,           {0} }, // emacs typo prevention
-#if 0
-  { MODKEY,             XK_Tab,                  view,           {0} },
-#endif
+  { MODKEY,             XK_Tab,                  tabswitch,      {0} },
   { MODKEY|ShiftMask,   XK_q,                    killclient,     {0} },
   { MODKEY,             XK_f, /* fullscreen */   togglefullscreen, {0} },
   { MODKEY,             XK_u, /* centered */     setlayout,      {.v = &layouts[0]} },

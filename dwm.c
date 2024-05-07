@@ -46,6 +46,22 @@
 #include "drw.h"
 #include "util.h"
 
+// #define ISG_DEBUG
+#ifdef ISG_DEBUG
+void debug_write_uint(unsigned int i)
+{
+    FILE *fp = fopen("/home/indy/temp/dwm.log", "a");
+    fprintf(fp, "%d\n", i);
+    fclose(fp);
+}
+void debug_write_newline(void)
+{
+    FILE *fp = fopen("/home/indy/temp/dwm.log", "a");
+    fprintf(fp, "\n");
+    fclose(fp);
+}
+#endif
+
 /* macros */
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
 #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
@@ -250,6 +266,7 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void tabswitch(const Arg *arg);
 static void centeredmaster(Monitor *m);
 static void autostart_exec(void);
 
@@ -287,6 +304,9 @@ static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
+
+static unsigned int previousviewui = 0;
+static unsigned int currentviewui = 0;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
@@ -2261,6 +2281,11 @@ view(const Arg *arg)
   int i;
   unsigned int tmptag;
 
+  if (arg->ui != currentviewui) {
+      previousviewui = currentviewui;
+      currentviewui = arg->ui;
+  }
+
   if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
     return;
   selmon->seltags ^= 1; /* toggle sel tagset */
@@ -2354,6 +2379,13 @@ xerrorstart(Display *dpy, XErrorEvent *ee)
 {
   die("dwm: another window manager is already running");
   return -1;
+}
+
+void
+tabswitch(const Arg *arg)
+{
+    Arg a = { .ui = previousviewui };
+    view(&a);
 }
 
 void

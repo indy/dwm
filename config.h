@@ -2,9 +2,9 @@
 // hsluv: clock12: 67, 70, 50
 /* appearance */
 #ifdef LARGER_FONT
-#define DEFAULT_FONT "Hack-11"
+#define DEFAULT_FONT "Hack Nerd Font-11"
 #else
-#define DEFAULT_FONT "Hack-8"
+#define DEFAULT_FONT "Hack Nerd Font-8"
 #endif
 
 static const unsigned int borderpx  = 1;        /* border pixel of windows */

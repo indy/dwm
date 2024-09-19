@@ -11,10 +11,10 @@ esac
 if [ "$(amixer -c $AUDIOCARD sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]" ]
 then
     # audible
-    AUDIO=$(printf "Audio: %s" "$(amixer -c $AUDIOCARD sget Master | awk -F"[][]" '/Mono:/ { print $2 }')")
+    AUDIO=$(printf " %s" "$(amixer -c $AUDIOCARD sget Master | awk -F"[][]" '/Mono:/ { print $2 }')")
 else
     # muted
-    AUDIO=$(printf "Muted")
+    AUDIO=$(printf "")
 fi
 
 # ----------------------------------------

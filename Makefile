@@ -47,17 +47,17 @@ dist: clean
 	rm -rf dwm-${VERSION}
 
 install: all
-	mkdir -p ${DESTDIR}${PREFIX}/bin
-	cp -f dwm ${DESTDIR}${PREFIX}/bin
-	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
-	mkdir -p ${DESTDIR}${MANPREFIX}/man1
-	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
-	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
-	cp scripts/user/* ${DESTDIR}${PREFIX}/bin
+	mkdir -p ${PREFIX}/bin
+	cp -f dwm ${PREFIX}/bin
+	chmod 755 ${PREFIX}/bin/dwm
+	mkdir -p ${MANPREFIX}/man1
+	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${MANPREFIX}/man1/dwm.1
+	chmod 644 ${MANPREFIX}/man1/dwm.1
+	cp scripts/user/* ${PREFIX}/bin
 
 uninstall:
-	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
-		${DESTDIR}${MANPREFIX}/man1/dwm.1
+	rm -f ${PREFIX}/bin/dwm\
+		${MANPREFIX}/man1/dwm.1
 
 # invoke once as sudo to setup lightdm with a dwm session option
 indy-system-install:

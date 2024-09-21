@@ -23,7 +23,16 @@ if [ -d "/sys/class/power_supply/BAT0" ]
 then
     read -r status </sys/class/power_supply/BAT0/status
     read -r capacity </sys/class/power_supply/BAT0/capacity
-    BATTERY=$(printf "Battery %s: %s%%" "$status" "$capacity")
+
+    if [ "$capacity" -lt 20 ]; then
+        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+    elif [ "$capacity" -lt 33 ]; then
+        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+    elif [ "$capacity" -lt 66 ]; then
+        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+    else
+        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+    fi
 fi
 
 # ----------------------------------------

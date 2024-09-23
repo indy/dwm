@@ -38,7 +38,10 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+#define MAX_TAGNAME_LEN 14		/* excludes TAG_PREPEND */
+#define TAG_PREPEND "%1i:"		/* formatted as 2 chars */
+#define MAX_TAGLEN 16			/* altogether */
+static char tags[][MAX_TAGLEN] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const char ptagf[] = "[%s %s]";  /* format of a tag label */
 static const char etagf[] = "[%s]";  /* format of an empty tag */
@@ -133,6 +136,7 @@ static Key keys[] = {
   { MODKEY,             XK_b,                    spawn,          {.v = audioprevcmd } },
   { MODKEY,             XK_n,                    spawn,          {.v = audionextcmd } },
 #endif
+  { MODKEY,             XK_n,                    nametag,        {0} },
   { MODKEY,             XK_m,                    spawn,          {.v = audiotogglecmd } },
   { MODKEY,             XK_comma,                spawn,          {.v = audiodeccmd } },
   { MODKEY,             XK_period,               spawn,          {.v = audioinccmd } },

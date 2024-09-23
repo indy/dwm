@@ -25,20 +25,20 @@ then
     read -r capacity </sys/class/power_supply/BAT0/capacity
 
     if [ "$capacity" -lt 20 ]; then
-        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
     elif [ "$capacity" -lt 33 ]; then
-        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
     elif [ "$capacity" -lt 66 ]; then
-        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
     else
-        BATTERY=$(printf " %s%% Battery %s" "$capacity" "$status")
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
     fi
 fi
 
 # ----------------------------------------
 
 diskspace() {
-    df -h | grep ^${1-} | awk '{print $4 " free"}'
+    df -h | grep ^${1-} | awk '{print $4 " Free"}'
 }
 
 case $HOSTNAME in
@@ -58,7 +58,7 @@ DATETIME=$(printf "%s" "$(date '+%a %b %d %R')")
 
 if [ -z "$BATTERY" ]
 then
-    xsetroot -name " $AUDIO   $DISKSPACE   $DATETIME "
+    xsetroot -name " $AUDIO     $DISKSPACE     $DATETIME "
 else
-    xsetroot -name " $AUDIO   $BATTERY   $DISKSPACE   $DATETIME "
+    xsetroot -name " $AUDIO    $BATTERY     $DISKSPACE     $DATETIME "
 fi

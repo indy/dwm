@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
 case $HOSTNAME in
-  (zara) AUDIOCARD=1;;
-  (zek) AUDIOCARD=1;;
-  (*) AUDIOCARD=0;;
+zara) AUDIOCARD=1 ;;
+zek) AUDIOCARD=1 ;;
+*) AUDIOCARD=0 ;;
 esac
 
 # ----------------------------------------
 
-if [ "$(amixer -c $AUDIOCARD sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]" ]
-then
+if [ "$(amixer -c $AUDIOCARD sget Master | awk -F' ' '/Mono:/ { print $6 }')" = "[on]" ]; then
     # audible
     AUDIO=$(printf " %s" "$(amixer -c $AUDIOCARD sget Master | awk -F"[][]" '/Mono:/ { print $2 }')")
 else
@@ -19,8 +18,7 @@ fi
 
 # ----------------------------------------
 
-if [ -d "/sys/class/power_supply/BAT0" ]
-then
+if [ -d "/sys/class/power_supply/BAT0" ]; then
     read -r status </sys/class/power_supply/BAT0/status
     read -r capacity </sys/class/power_supply/BAT0/capacity
 
@@ -42,12 +40,12 @@ diskspace() {
 }
 
 case $HOSTNAME in
-  (anarch) DISKSPACE=$(diskspace /dev/sdc2);;
-  (theseus) DISKSPACE=$(diskspace /dev/sdc2);;
-  (dellboy) DISKSPACE=$(diskspace /dev/nvme0n1p3);;
-  (zara) DISKSPACE=$(diskspace /dev/nvme0n1p2);;
-  (zek) DISKSPACE=$(diskspace /dev/sda2);;
-  (*) DISKSPACE=$(printf "(dwm-bar) unknown hostname");;
+anarch) DISKSPACE=$(diskspace /dev/sdc2) ;;
+theseus) DISKSPACE=$(diskspace /dev/sdc2) ;;
+dellboy) DISKSPACE=$(diskspace /dev/nvme0n1p3) ;;
+zara) DISKSPACE=$(diskspace /dev/nvme0n1p2) ;;
+zek) DISKSPACE=$(diskspace /dev/sda2) ;;
+*) DISKSPACE=$(printf "(dwm-bar) unknown hostname") ;;
 esac
 
 # ----------------------------------------
@@ -56,9 +54,8 @@ DATETIME=$(printf "%s" "$(date '+%a %b %d %R')")
 
 # ----------------------------------------
 
-if [ -z "$BATTERY" ]
-then
-    xsetroot -name " $AUDIO     $DISKSPACE     $DATETIME "
+if [ -z "$BATTERY" ]; then
+    xsetroot -name " $AUDIO    $DISKSPACE    $DATETIME "
 else
-    xsetroot -name " $AUDIO    $BATTERY     $DISKSPACE     $DATETIME "
+    xsetroot -name " $AUDIO   $BATTERY    $DISKSPACE    $DATETIME "
 fi

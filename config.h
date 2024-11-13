@@ -32,7 +32,6 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
   "sh", "-c", "feh --randomize --bg-max /home/indy/gdrive/art/*", NULL,
   "dwm-bar", NULL,
-  "emacs", NULL,
   "brave", NULL,
   NULL /* terminate */
 };

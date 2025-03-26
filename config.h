@@ -53,11 +53,10 @@ static const Rule rules[] = {
    *  WM_NAME(STRING) = title
    */
   /* class               instance    title       tags mask     switchtotag isfloating   monitor */
-  // { "firefox",           NULL,       NULL,       1 << 0,       1,          0,           -1 },
   { "Brave-browser",     NULL,       NULL,       1 << 0,       1,          0,           -1 },
   { "Emacs",             NULL,       NULL,       1 << 1,       1,          0,           -1 },
   { "calibre",           NULL,       NULL,       1 << 2,       1,          0,           -1 },
-  //  { "steam",             NULL,       NULL,       1 << 5,       1,          0,           -1 },
+  { "steam",             NULL,       NULL,       1 << 5,       1,          0,           -1 },
 };
 
 /* layout(s) */
@@ -91,7 +90,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, NULL };
 static const char *commondmenucmd[] = { "dmenu_run_common", "-m", dmenumon, NULL };
 static const char *refreshbarcmd[] = { "dwm-bar-update", NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *wallpapercmd[]  = { "sh", "-c", "feh --randomize --bg-max /home/indy/gdrive/art/*", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };

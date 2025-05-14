@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 case $HOSTNAME in
+fedora) AUDIOCARD=1 ;;
 zara) AUDIOCARD=1 ;;
 zek) AUDIOCARD=1 ;;
 *) AUDIOCARD=0 ;;
@@ -36,13 +37,14 @@ fi
 # ----------------------------------------
 
 diskspace() {
-    df -h | grep ^${1-} | awk '{print $4 " Free"}'
+    df -h | grep ^${1-} | head -n1 | awk '{print $4 " Free"}'
 }
 
 case $HOSTNAME in
 anarch) DISKSPACE=$(diskspace /dev/sdc2) ;;
 theseus) DISKSPACE=$(diskspace /dev/sdc2) ;;
 dellboy) DISKSPACE=$(diskspace /dev/nvme0n1p3) ;;
+fedora) DISKSPACE=$(diskspace /dev/nvme0n1p3) ;;
 zara) DISKSPACE=$(diskspace /dev/nvme0n1p2) ;;
 zek) DISKSPACE=$(diskspace /dev/sda2) ;;
 *) DISKSPACE=$(printf "(dwm-bar) unknown hostname") ;;

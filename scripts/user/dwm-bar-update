@@ -19,6 +19,25 @@ fi
 
 # ----------------------------------------
 
+# framework laptop (fedora) uses BAT1
+#
+if [ -d "/sys/class/power_supply/BAT1" ]; then
+    read -r status </sys/class/power_supply/BAT1/status
+    read -r capacity </sys/class/power_supply/BAT1/capacity
+
+    if [ "$capacity" -lt 20 ]; then
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
+    elif [ "$capacity" -lt 33 ]; then
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
+    elif [ "$capacity" -lt 66 ]; then
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
+    else
+        BATTERY=$(printf " %s%% %s" "$capacity" "$status")
+    fi
+fi
+
+# dell laptop uses BAT0
+#
 if [ -d "/sys/class/power_supply/BAT0" ]; then
     read -r status </sys/class/power_supply/BAT0/status
     read -r capacity </sys/class/power_supply/BAT0/capacity

@@ -1,2 +1,12 @@
 #!/bin/bash
+
+# Source ~/.xprofile. Required because I switched display managers from gdm to lightdm.
+# gdm sources ~/.profile, lightdm does not.
+# so doing the proper thing and sourcing ~/.xprofile which sets some xwindows stuff (like turning off
+# screensavers/power management, before sourcing ~/.profile)
+#
+if [ -f "$HOME/.xprofile" ]; then
+    . "$HOME/.xprofile"
+fi
+
 exec /home/indy/.local/bin/dwm &> /tmp/dwm-123

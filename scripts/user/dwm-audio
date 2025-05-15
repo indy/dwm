@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 case $HOSTNAME in
+  (fedora) AUDIOCARD=1;;
   (zara) AUDIOCARD=1;;
   (zek) AUDIOCARD=1;;
   (*) AUDIOCARD=0;;
@@ -15,15 +16,6 @@ then
 elif [ "$1" = "toggle" ]
 then
   amixer -q -c $AUDIOCARD -D pulse sset Master toggle
-elif [ "$1" = "playpause" ]
-then
-  rhythmbox-client --play-pause
-elif [ "$1" = "prev" ]
-then
-  rhythmbox-client --previous
-elif [ "$1" = "next" ]
-then
-  rhythmbox-client --next
 fi
 
 dwm-bar-update

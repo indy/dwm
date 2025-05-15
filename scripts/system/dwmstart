@@ -19,6 +19,9 @@ unset XMODIFIERS
 if [ "$XDG_CURRENT_DESKTOP" = "dwm" ]; then
     # was having issues on the framework laptop with message exhaustion,
     # keyboard inputs would only be received after the mouse was moved
-    picom --backend xrender --vsync --xrender-sync --xrender-sync-fence &
+    picom --config /home/indy/.config/picom/picom.conf &
+
+    # previously picom was invoked with:
+    # picom --backend xrender --vsync --xrender-sync --xrender-sync-fence &
 fi
 exec /home/indy/.local/bin/dwm &> /tmp/dwm-123

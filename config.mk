@@ -27,7 +27,7 @@ LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS}
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_POSIX_C_SOURCE=200809L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 # use the larger font when compiling for laptop
-ifeq ($(shell hostname), dellboy)
+ifeq ($(shell hostname), fedora)
 	CPPFLAGS := $(CPPFLAGS) -DLARGER_FONT
 endif
 
